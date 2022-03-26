@@ -1,20 +1,21 @@
 <div class="search">
-    <input name="name-search" placeholder="Search By Name" type="text" autocomplete="off"
-        [(ngModel)]="searchTerm" />
+    <input name="name-search" placeholder="Search By Name" type="text" autocomplete="off" [(ngModel)]="searchTerm" />
     <button (click)="getCharacters(1)" class="btn btn-primary">Search</button>
 </div>
 
-<table *ngIf="characterCall" class="table-dark">
-    <tbody *ngIf="characterCall.results">
-        <tr *ngFor="let c of characterCall.results" [routerLink]="['/character', c.id]"
-            [queryParams]="{ fromPage : currentPage, nameSearch : searchTerm }">
-            <td>{{c.name}}</td>
-            <td>{{c.species}}</td>
-            <td>{{c.status}}</td>
-            <td>{{c.gender}}</td>
-        </tr>
-    </tbody>
-</table>
+<div *ngIf="characterCall" class="characters-list">
+    <table class="table-dark">
+        <tbody *ngIf="characterCall.results">
+            <tr *ngFor="let c of characterCall.results" [routerLink]="['/character', c.id]"
+                [queryParams]="{ fromPage : currentPage, nameSearch : searchTerm }">
+                <td>{{c.name}}</td>
+                <td>{{c.species}}</td>
+                <td>{{c.status}}</td>
+                <td>{{c.gender}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <ng-container *ngIf="pages">
     <div class="pagination">
