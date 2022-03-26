@@ -1,4 +1,4 @@
-<table>
+<table class="table-dark">
     <tbody *ngIf="episodesCall?.results">
         <tr *ngFor="let e of episodesCall.results">
             <td>{{e.name}}</td>
@@ -8,5 +8,7 @@
 </table>
 
 <ng-container *ngIf="pages">
-    <span *ngFor="let p of pages" [ngClass]="{'active': (p===currentPage)}" (click)="getEpisodes(p)">{{p}}</span>
+    <div class="pagination">
+        <span *ngFor="let p of pages" [ngClass]="{'active': (p===currentPage)}" (click)="getEpisodes(p)">{{p}}</span>
+    </div>
 </ng-container>
